@@ -2,7 +2,6 @@
 #include <string>
 #include <map>
 
-//VariablesManager by Nathan.Casabieille
 //Need to add templates for data types
 
 class VariablesManager {
