@@ -71,30 +71,30 @@ void VariablesManager::mainLoop() {
     while (active) {
         std::cout << "action  (c/u/r/d/q) : ";
         std::cin >> cmd;
-        if (cmd == "c"){
+        if (cmd == "c"){ // create a variable
             getVariableName(variableName);
             getVariableValue(variableValue);
             if (!localVariablesManager.add(variableName, variableValue)) {
                 std::cerr << "This variable already exists.\n";
             }
         }
-        else if (cmd == "u"){
+        else if (cmd == "u"){ // modify a variable
             getVariableName(variableName);
             getVariableValue(variableValue);
             if (!localVariablesManager.update(variableName, variableValue)) {
                 std::cerr << "This variable does not exists.\n";
             }
         }
-        else if (cmd == "r"){
+        else if (cmd == "r"){ // delete a variable
             getVariableName(variableName);
             if (!localVariablesManager.remove(variableName)) {
                 std::cerr << "This variable does not exists.\n";
             }
         }
-        else if (cmd == "d") {
+        else if (cmd == "d") { // display variables
             localVariablesManager.dump();
         }
-        else if (cmd == "q") {
+        else if (cmd == "q") { // quit
             active = false;
         }
         else {
