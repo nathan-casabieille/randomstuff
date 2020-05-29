@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2020
+** Nathan Casabieille
+** File description:
+** variables manager
+*/
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -79,7 +86,7 @@ void VariablesManager::mainLoop() {
 
 int main(int argc, char** argv) {
     VariablesManager* localVariablesManagerPointer = new VariablesManager;
-    localVariablesManagerPointer -> mainLoop();
+    localVariablesManagerPointer->mainLoop();
     delete localVariablesManagerPointer;
     return (1);
 }
