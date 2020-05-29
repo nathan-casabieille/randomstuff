@@ -23,6 +23,16 @@ private:
     }
 public:
     void mainLoop();
+    void getVariableName(std::string &variableName)
+    {
+        std::cout << "Variable name : ";
+        std::cin >> variableName;
+    }
+    void getVariableValue(std::string &variableValue)
+    {
+        std::cout << "Variable value : ";
+        std::cin >> variableValue;
+    }
     bool add(std::string variableName, std::string variableValue){
         if (exists(variableName)) {
             return false;
@@ -52,40 +62,42 @@ public:
     }
 };
 
+
+
 void VariablesManager::mainLoop() {
-    VariablesManager& localVariablesManager = *this;
+    bool active = true;
     std::string cmd;
     std::string variableName, variableValue;
-    while (1) {
-        std::cout << "action  (c/u/r/d) : ";
+    VariablesManager& localVariablesManager = *this;
+
+    while (active) {
+        std::cout << "action  (c/u/r/d/q) : ";
         std::cin >> cmd;
         if (cmd == "c"){
-            std::cout << "Variable name : ";
-            std::cin >> variableName;
-            std::cout << "Variable value : ";
-            std::cin >> variableValue;
+            getVariableName(variableName);
+            getVariableValue(variableValue);
             if (!localVariablesManager.add(variableName, variableValue)) {
                 std::cerr << "This variable already exists.\n";
             }
         }
         else if (cmd == "u"){
-            std::cout << "Variable name : ";
-            std::cin >> variableName;
-            std::cout << "Variable value : ";
-            std::cin >> variableValue;
+            getVariableName(variableName);
+            getVariableValue(variableValue);
             if (!localVariablesManager.update(variableName, variableValue)) {
                 std::cerr << "This variable does not exists.\n";
             }
         }
         else if (cmd == "r"){
-            std::cout << "Variable name : ";
-            std::cin >> variableName;
+            getVariableName(variableName);
             if (!localVariablesManager.remove(variableName)) {
                 std::cerr << "This variable does not exists.\n";
             }
         }
         else if (cmd == "d") {
             localVariablesManager.dump();
+        }
+        else if (cmd == "q") {
+            active = false;
         }
         else {
             std::cerr << "Syntax Error, \"" << cmd << "\" does not exists.\n";
@@ -94,7 +106,8 @@ void VariablesManager::mainLoop() {
 }
 
 int main(int argc, char** argv) {
-    VariablesManager* localVariablesManagerPointer = new VariablesManager;
+    VariablesManager *localVariablesManagerPointer = new VariablesManager;
+
     localVariablesManagerPointer->mainLoop();
     delete localVariablesManagerPointer;
     return (1);
