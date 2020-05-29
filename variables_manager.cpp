@@ -62,8 +62,6 @@ public:
     }
 };
 
-
-
 void VariablesManager::mainLoop() {
     bool active = true;
     std::string cmd;
