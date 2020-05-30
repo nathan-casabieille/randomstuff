@@ -14,48 +14,57 @@
 class VariablesManager {
 private:
     std::map<std::string, std::string> variablesMap;
+
     bool exists(std::string variableName){
         std::map<std::string, std::string>::iterator it = variablesMap.find(variableName);
+
         if (it != variablesMap.end()) {
-            return true;
+            return (true);
         }
-        return false;
+        return (false);
     }
 public:
     void mainLoop();
+
     void getVariableName(std::string &variableName)
     {
         std::cout << "Variable name : ";
         std::cin >> variableName;
     }
+
     void getVariableValue(std::string &variableValue)
     {
         std::cout << "Variable value : ";
         std::cin >> variableValue;
     }
+
     bool add(std::string variableName, std::string variableValue){
         if (exists(variableName)) {
-            return false;
+            return (false);
         }
         variablesMap[variableName] = variableValue;
-        return true;
+        return (true);
     }
+
     bool update(std::string variableName, std::string variableValue){
         if (!exists(variableName)) {
-            return false;
+            return (false);
         }
         variablesMap[variableName] = variableValue;
-        return  true;
+        return  (true);
     }
+
     bool remove(std::string variableName){
         if (!exists(variableName)) {
-            return false;
+            return (false);
         }
         variablesMap.erase(variableName);
-        return true;
+        return (true);
     }
+
     void dump(){
         std::map<std::string, std::string>::iterator it = variablesMap.begin();
+
         for (; it != variablesMap.end(); it++){
             std::cout << it->first << " = " << it->second << "\n";
         }
