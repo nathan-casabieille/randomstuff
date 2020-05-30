@@ -64,7 +64,7 @@ public:
         std::map<std::string, std::string>::iterator it = variablesMap.begin();
 
         for (; it != variablesMap.end(); it++){
-            std::cout << it->first << " = " << it->second << "\n";
+            std::cout << it->first << " = " << it->second << '\n'
         }
     }
 };
