@@ -9,8 +9,6 @@
 #include <string>
 #include <map>
 
-//Need to add templates for data types
-
 class VariablesManager {
 private:
     std::map<std::string, std::string> variablesMap;
