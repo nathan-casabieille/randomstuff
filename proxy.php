@@ -1,11 +1,11 @@
 <?php
         $host = 'host';
+        $db_name = 'database';
         $username = 'username';
         $password = 'password';
-        $database = 'database';
 
         try {
-            $dsn = 'mysql:host=' . $host . ';dbname=' . $database;
+            $dsn = 'mysql:host=' . $host . ';dbname=' . $db_name;
             $db = new PDO($dns, $username, $password);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
