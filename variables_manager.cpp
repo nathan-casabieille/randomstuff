@@ -1,8 +1,5 @@
 /*
-** EPITECH PROJECT, 2020
-** Nathan Casabieille
-** File description:
-** variables manager
+    My first program written in C++ (2015)
 */
 
 #include <iostream>
