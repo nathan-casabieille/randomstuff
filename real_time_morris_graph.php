@@ -1,5 +1,5 @@
 /*
-    Live updating morris-js graph without refreshing the page
+    Real-time morris-js graph without refreshing the page
     
     generate_grap.php is a script which generates an array of data by querying the Database.
     display_graph makes an http request to generate_graph.php and updates the graph object.
