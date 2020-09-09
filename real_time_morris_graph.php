@@ -56,7 +56,7 @@
 
     function draw_graph() {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", '<?php echo "generate_graph.php?id=" . $patient['id '];?>', false);
+        xhr.open("GET", '<?php echo "generate_graph.php?id=" . $patient['id'];?>', false);
         xhr.send(null);
         eval(xhr.responseText);
     }
