@@ -34,10 +34,10 @@
 
 <html>
     <head>
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     </head>
     <body>
         <div id="morris_graph" style="height: 250px;"></div>
@@ -67,32 +67,32 @@
 */
 
 <?php
-require_once ('Data.php');
-require_once ('Patients.php');
-require_once ('Database.php');
+    require_once ('Data.php');
+    require_once ('Patients.php');
+    require_once ('Database.php');
 
-$database = connectToDatabase();
+    $database = connectToDatabase();
 
-$patientsManager = new PatientsManager();
-$patient = $patientsManager->getPatient($database, $_GET['id']); // SELECT * FROM Patients WHERE id = $_GET['id']
+    $patientsManager = new PatientsManager();
+    $patient = $patientsManager->getPatient($database, $_GET['id']); // SELECT * FROM Patients WHERE id = $_GET['id']
 
-$dataManager = new DataManager();
-$dataArray = $dataManager->getData($database, $_GET['id']); // SELECT * FROM Data WHERE id_patient = $_GET['id']
+    $dataManager = new DataManager();
+    $dataArray = $dataManager->getData($database, $_GET['id']); // SELECT * FROM Data WHERE id_patient = $_GET['id']
 
 
-echo 'new Morris.Line({';
-echo 'element: \'morris_graph\',';
-echo 'data: [';
-foreach ($dataArray as &$data) {
-    echo '{';
-    echo 'm: \'' . date('Y-m-d h:i:s', strtotime($data['hour'])) . '\',';
-    echo 'a: ' . intval($data['temperature']) . ',';
-    echo 'b: ' . intval($data['pulse_rate']);
-    echo '},';
-}
-echo '],';
-echo 'xkey: \'m\',';
-echo 'ykeys: [\'a\', \'b\'],';
-echo 'labels: [\'Temperature\', \'Pulse Rate\']';
-echo '});';
+    echo 'new Morris.Line({';
+    echo 'element: \'morris_graph\',';
+    echo 'data: [';
+    foreach ($dataArray as &$data) {
+        echo '{';
+        echo 'm: \'' . date('Y-m-d h:i:s', strtotime($data['hour'])) . '\',';
+        echo 'a: ' . intval($data['temperature']) . ',';
+        echo 'b: ' . intval($data['pulse_rate']);
+        echo '},';
+    }
+    echo '],';
+    echo 'xkey: \'m\',';
+    echo 'ykeys: [\'a\', \'b\'],';
+    echo 'labels: [\'Temperature\', \'Pulse Rate\']';
+    echo '});';
 ?>
