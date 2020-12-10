@@ -1,5 +1,5 @@
 /*
-    My first program written in C++ (2015)
+    My first program (2012-2013), transcribed from a sheet of paper
 */
 
 #include <iostream>
