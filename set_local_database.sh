@@ -9,3 +9,4 @@ mariadb
 composer install
 npm install
 php -S localhost:8000 -t .
+# localhost:8000/phpmyadmin
