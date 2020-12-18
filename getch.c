@@ -1,29 +1,29 @@
 #include <stdio.h>
 #include <termios.h>
 
-static struct termios old;
-static struct termios new;
-
-void initTermios(int echo)
+void initTermios(struct termios *term)
 {
-    tcgetattr(0, &old);
-    new = old;
-    new.c_lflag &= ~ICANON;
-    new.c_lflag &= echo ? ECHO : ~ECHO;
-    tcsetattr(0, TCSANOW, &new);
+    struct termios new_term;
+
+    tcgetattr(0, term);
+    new_term = *term;
+    new_term.c_lflag &= ~ICANON;
+    new_term.c_lflag &= ~ECHO;
+    tcsetattr(0, TCSANOW, &new_term);
 }
 
-void resetTermios(void)
+void resetTermios(struct termios *term)
 {
-    tcsetattr(0, TCSANOW, &old);
+    tcsetattr(0, TCSANOW, term);
 }
 
 char getch(void)
 {
     char ch;
+    struct termios term;
 
-    initTermios(0);
+    initTermios(&term);
     ch = getchar();
-    resetTermios();
+    resetTermios(&term);
     return (ch);
 }
